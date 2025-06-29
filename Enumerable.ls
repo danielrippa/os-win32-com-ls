@@ -7,17 +7,17 @@
 
       type '< Object >' enumerable ; type '< Function >' fn
 
-      new Enumerator enumerable ; index = 0
+      e = new Enumerator enumerable ; index = 0
 
-        loop
+      loop
 
-          break if ..at-end!
+        break if e.at-end!
 
-          break-flag = fn ..item!, index++, enumerable, ..
+        break-flag = fn e.item!, index++, enumerable, e
 
-          if break-flag isnt void => break if break-flag
+        if break-flag isnt void => break if break-flag
 
-          ..move-next!
+        e.move-next!
 
     {
       each-enumeration-item

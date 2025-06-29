@@ -1,7 +1,8 @@
 
   do ->
 
-    { create-com-object } = dependency 'os.win32.ComObject'
+    { create-com-object } = dependency 'os.win32.com.ComObject'
+    { type } = dependency 'reflection.Type'
 
     create-ado-stream = (type = 2, charset = 'x-user-defined') ->
 
