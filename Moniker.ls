@@ -1,15 +1,15 @@
 
   do ->
 
-    moniker-to-string = ->
+    { type } = dependency 'reflection.Type'
 
-    create-com-moniker = (scheme, identifier, security, identifier-to-string) ->
+    create-com-moniker = (scheme, identifier) ->
 
-      to-string = ->
+      type '< String >' scheme ; type '< Object String >' identifier
 
-        ""{ @scheme }:#{ identifier-string }"
+      to-string = -> "{ @scheme }:#{ @identifier }"
 
-      { scheme, identifier, security, to-string }
+      { scheme, identifier, to-string }
 
     {
       create-com-moniker

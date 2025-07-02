@@ -16,7 +16,7 @@
 
     create-dcom-authority-descriptor = (protocol, domain) ->
 
-      to-string = -> "#{ protocol }:#{ domain }"
+      to-string = -> "#{ @protocol }:#{ @domain }"
 
       { protocol, domain, to-string }
 
