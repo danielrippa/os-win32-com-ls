@@ -7,7 +7,7 @@
 
       type '< String >' scheme ; type '< Object String >' identifier
 
-      to-string = -> "{ @scheme }:#{ @identifier }"
+      to-string = -> [ @scheme, @identifier ] * ':'
 
       { scheme, identifier, to-string }
 
