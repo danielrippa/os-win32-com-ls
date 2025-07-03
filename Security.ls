@@ -7,6 +7,7 @@
     { is-function } = dependency 'unsafe.Function'
     { type } = dependency 'reflection.Type'
     { value-as-string } = dependency 'reflection.Value'
+    { curly-brackets } = dependency 'unsafe.Circumfix'
 
     { impersonate } = impersonation-levels = object-from-array <[ anonymous identify impersonate delegate ]>
 
@@ -20,12 +21,14 @@
 
       { protocol, domain, to-string }
 
-    create-dcom-security-descriptor = (authority, impersonation-level = impersonate, authentication-level = pkt-privacy) ->
+    maybe-braces = -> if it is '' then '' else curly-brackets it
+
+    create-dcom-security-descriptor = (authority, impersonation-level = impersonate, authentication-level) ->
 
       type '< Object Undefined >' authority
       type '< String Undefined >' impersonation-level ; type '< String Undefined >' authentication-level
 
-      to-string = -> @ |> object-member-pairs |> keep _ , has-value |> map _ , (* '=') |> (* ',')
+      to-string = -> @ |> object-member-pairs |> keep _ , has-value |> map _ , (* '=') |> (* ',') |> maybe-braces
 
       { impersonation-level, authentication-level, authority, to-string }
 
