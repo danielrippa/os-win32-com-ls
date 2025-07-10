@@ -8,6 +8,8 @@
 
       create-com-object 'ADODB.Stream' => ..Type = type ; ..Charset = charset
 
+    ado-stream-for-filepath = (filepath, type) -> create-ado-stream type => ..Open! ; ..LoadFromFile filepath
+
     use-ado-stream = (fn) ->
 
       result = error = null
@@ -29,7 +31,7 @@
       use-ado-stream stream-byte-length .result
 
     {
-      create-ado-stream,
+      create-ado-stream, ado-stream-for-filepath,
       use-ado-stream,
       string-byte-length
     }
